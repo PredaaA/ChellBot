@@ -7,6 +7,10 @@ module.exports = {
     developer: false,
 
     run: async (msg: Message, args: string[]) => {
-        msg.channel?.sendMessage(String(msg.author?.username));
+        const user = msg.author;
+        const content = (
+            `**${user?.username} - ${user?._id}**\n${user?.status.text}\n\n`
+        )
+        msg.channel?.sendMessage(content);
     }
 }
