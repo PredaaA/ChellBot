@@ -28,6 +28,8 @@ export class BotFramework {
         })
 
         this.client.on('message', async msg => {
+            if (!msg.author || msg.author.bot) return
+
             const context = this.isValidContext(msg);
             if (!context.command || !context.canExecute) return
 
