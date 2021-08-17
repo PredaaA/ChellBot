@@ -1,8 +1,16 @@
-import { Client } from 'revolt.js';
+import { Client as RevoltClient } from 'revolt.js';
 import { developers, prefix, token } from './config.json';
 import { BotFramework } from './core/framework';
 
-let client = new Client();
-new BotFramework(client, developers, prefix);
+class ChellBot extends RevoltClient {
+    framework: BotFramework;
+
+    constructor(...args: undefined[]) {
+        super(...args);
+        this.framework = new BotFramework(this, developers, prefix);
+    }
+
+}
+let client = new ChellBot();
 
 client.loginBot(token);
