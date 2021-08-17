@@ -32,7 +32,7 @@ export class BotFramework {
             if (!context.command || !context.canExecute) return
 
             console.info(
-                `[command] ${msg.author?.username} (${msg.author_id}) in channel ${msg.channel?.name} (${msg.channel_id}) of server ${msg.channel?.server?.name} (${msg.channel?.server_id}) - `
+                `[command] ${msg.author?.username} (${msg.author_id}) in channel #${msg.channel?.name} (${msg.channel_id}) of server ${msg.channel?.server?.name} (${msg.channel?.server_id}) - `
                 + `${msg.content}`
             )
 
