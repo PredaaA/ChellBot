@@ -1,8 +1,8 @@
 import { Client } from 'revolt.js';
+import { developers, prefix, token } from './config.json';
 import { BotFramework } from './core/framework';
-import { prefix, token } from './config.json';
 
 let client = new Client();
-new BotFramework(client, prefix);
+new BotFramework(client, developers, prefix);
 
 client.loginBot(token);

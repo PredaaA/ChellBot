@@ -4,7 +4,7 @@ const commandsFiles = fs.readdirSync('./src/commands').filter(file => file.endsW
 let commandsLoad = [];
 for (const file of commandsFiles) {
     commandsLoad.push(require(`../commands/${file}`))
-    console.info(`Loaded command file ${file}!`)
+    console.info(`[commands] Loaded command file ${file}!`)
 }
 
 export const commands = commandsLoad;

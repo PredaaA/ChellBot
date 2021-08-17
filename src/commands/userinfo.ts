@@ -1,12 +1,12 @@
-import { Client } from "revolt.js";
 import { Message } from "revolt.js/dist/maps/Messages";
 
 module.exports = {
     name: 'userinfo',
     aliases: ['ui'],
     description: 'Shows information about an user.',
+    developer: false,
 
-    run: async (message: Message, client: Client) => {
-        message.channel?.sendMessage(String(message.author?.username));
+    run: async (msg: Message, args: string[]) => {
+        msg.channel?.sendMessage(String(msg.author?.username));
     }
 }
