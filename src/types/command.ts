@@ -5,7 +5,7 @@ export interface Command {
     aliases: string[];
     description: string | null;
     developer: boolean;
-    run: (msg: Message, args: string[]) => void;
+    run: (msg: Message, args: string[]) => Promise<void>;
 }
 
 export interface Context {
