@@ -1,7 +1,7 @@
 import { Client } from 'revolt.js';
 import { Message } from 'revolt.js/dist/maps/Messages';
 import { commands } from './commands';
-import { Context } from '../types/command';
+import { Context, Command } from '../types/command';
 
 export class BotFramework {
     client: Client;
@@ -45,17 +45,21 @@ export class BotFramework {
     }
 
     isValidContext(msg: Message): Context {
-        let values = { command: null, args: [], canExecute: false };
+        let values: Context = { command: null, args: [], canExecute: false };
         if (!msg.content.startsWith(this.prefix)) return values;
 
         const args = msg.content.substr(this.prefix.length).split(' ');
         const commandName = args.shift();
-        const command = this.commands.find(cmd => cmd.name === commandName || cmd.aliases.includes(commandName));
+        const command: Command = this.getCommand(commandName);
         values.command = command;
         values.args = args;
         if (!command || command.developer && !this.developers.includes(msg.author_id)) return values;
 
         values.canExecute = true;
         return values;
+    }
+
+    getCommand(value: string) {
+        return this.commands.find(cmd => cmd.name === value || cmd.aliases.includes(value))
     }
 }
