@@ -9,6 +9,10 @@ module.exports = {
     developer: true,
 
     run: async (msg: Message, args: string[]) => {
+        const client = msg.client;
+        const channel = msg.channel;
+        const server = channel?.server;
+
         const toExec = args.join(' ');
         if (!toExec) return msg.channel?.sendMessage('Eval input missing.');
 
